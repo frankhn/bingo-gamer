@@ -3,6 +3,6 @@ import './spinner.css'
 
 export default () => {
     return (
-        <div className="lds-hourglass"></div>
+        <div className="lds-ripple"><div></div><div></div></div>
     )
 }
