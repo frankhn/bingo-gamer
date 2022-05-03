@@ -1,19 +1,34 @@
-import React, { useState } from 'react'
-import { useBoxes } from '../context/boxes.context'
+import { useState } from 'react'
 import { useGuess } from '../context/guess.context'
+import { usePossibleBingo } from '../context/possibleBingo.context'
+import { Iboxes } from '../interfaces/boxes.interface'
+import { checkIfBingo, data } from '../utils'
 import Spinner from './common/spinner'
 
 export default () => {
     const [state, setState] = useState({ loading: false })
     const { guess, setGuess }: any = useGuess()
-    const { boxes, setBoxes }: any = useBoxes()
+    const { possibleBingo, setPossibleBingo }: any = usePossibleBingo()
+
+    // Generate random excluding already marked boxes
+    const getPreparedData = (): Array<Iboxes> => {
+        return data.filter(box => box.id !== Math.ceil(data.length / 2)).filter(val => !guess.marked.includes(val.id))
+    }
 
     const handleGuesse = () => {
         setState((prevState) => ({ ...prevState, loading: true }))
         setTimeout(() => {
-            const random = Math.floor(Math.random() * boxes.length);
+            let random = Math.floor(Math.random() * getPreparedData().length);
+            console.log(random, '#random')
+            random = getPreparedData()[random].id
             setGuess({ guess: random, marked: [...guess.marked, random] })
-            console.log(boxes)
+
+            // Check If Bingo
+            const result = checkIfBingo([...guess.marked, random])
+            if (result.length > 0) {
+                console.log(result, 'Bingo Bingo')
+                setPossibleBingo(possibleBingo.filter((p: number[]) => p !== result))
+            }
             setState((prevState) => ({ ...prevState, loading: false }))
         }, 2000)
     }
