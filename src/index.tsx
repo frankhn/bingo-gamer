@@ -5,17 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GuessContextProvider } from './context/guess.context';
 import { BoxesContextProvider } from './context/boxes.context';
+import { PossibleBingoContextProvider } from './context/possibleBingo.context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BoxesContextProvider>
-      <GuessContextProvider>
-        <App />
-      </GuessContextProvider>
-    </BoxesContextProvider>
+    <PossibleBingoContextProvider>
+      <BoxesContextProvider>
+        <GuessContextProvider>
+          <App />
+        </GuessContextProvider>
+      </BoxesContextProvider>
+    </PossibleBingoContextProvider>
   </React.StrictMode>
 );
 reportWebVitals();
