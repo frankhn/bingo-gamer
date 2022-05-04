@@ -10,9 +10,9 @@ import { bingos, getCenter, data } from './utils'
 
 function App() {
 
-  const { boxes, setBoxes }: any = useBoxes()
-  const { guess, setGuess }: any = useGuess()
-  const { possibleBingoss, setPossibleBingo }: any = usePossibleBingo()
+  const { setBoxes }: any = useBoxes()
+  const { setGuess }: any = useGuess()
+  const { setPossibleBingo }: any = usePossibleBingo()
 
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import { Iboxes } from '../interfaces/boxes.interface';
 
 function BoxItem({ text, id, marked }: Iboxes) {
 
-    const { guess, setGuess }: any = useGuess()
+    const { guess }: any = useGuess()
 
     return (
         <>
