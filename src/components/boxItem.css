@@ -1,0 +1,10 @@
+.boxItem {
+     height: "127px";
+    width: "127px";
+    background-color: "transparent";
+    border-radius: "50%";
+    border-width: "1px";
+    border-color: "#000";
+    text-align: "center";
+    display: "inline-block";
+}

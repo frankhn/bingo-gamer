@@ -24,11 +24,11 @@ export default () => {
             setGuess({ guess: random, marked: [...guess.marked, random] })
 
             // Check If Bingo
-            const result = checkIfBingo([...guess.marked, random])
-            if (result.length > 0) {
-                console.log(result, 'Bingo Bingo')
-                setPossibleBingo(possibleBingo.filter((p: number[]) => p !== result))
-            }
+            // const result = checkIfBingo([...guess.marked, random])
+            // if (result.length > 0) {
+            //     console.log(result, 'Bingo Bingo')
+            //     setPossibleBingo(possibleBingo.filter((p: number[]) => p !== result))
+            // }
             setState((prevState) => ({ ...prevState, loading: false }))
         }, 2000)
     }
