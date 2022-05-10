@@ -1,6 +1,6 @@
 import { Iboxes } from "../../interfaces/boxes.interface";
 
-export const data: Array<Iboxes> = [
+const arr: Array<Iboxes> = [
     { id: 1, text: "We only write humans understandable codes", marked: false },
     { id: 2, text: "First, solve the problem. Then, write the code", marked: false },
     { id: 3, text: "Experience is the name given to your mistakes", marked: false },
@@ -27,3 +27,16 @@ export const data: Array<Iboxes> = [
     { id: 24, text: "Sufficiently advanced abstractions are indistinguishable from obfuscation", marked: false },
     { id: 25, text: "An estimate is the most optimistic prediction that has a non-zero probability of coming true", marked: false },
 ]
+
+const shuffle = (data: Array<Iboxes>) => {
+    const confIdx = { id: 13, text: "Conf call Bingo", marked: true }
+
+    let arr = data.filter(arr => arr.id !== 13)
+
+    arr = arr.slice().sort(() => Math.random() - 0.5)
+
+    arr.splice(12, 0, confIdx)
+    return arr;
+}
+
+export const data = shuffle(arr)
